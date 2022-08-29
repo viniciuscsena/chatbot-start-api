@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ResponsePresenter {
+public class RespostaPresenter {
 
     Long perguntaId;
     String mensagem;
