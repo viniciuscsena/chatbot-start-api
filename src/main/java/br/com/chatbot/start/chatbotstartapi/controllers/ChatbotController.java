@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
@@ -23,6 +21,12 @@ public class ChatbotController {
     @GetMapping("/mensagem/{idOpcao}")
     public ResponseEntity<RespostaPresenter> processaOpcao(@PathVariable Long idOpcao) {
 
-        return new ResponseEntity(respostaService.responder(idOpcao), HttpStatus.OK);
+        return ResponseEntity.ok().body(respostaService.responder(idOpcao));
+    }
+
+    @GetMapping("/mensagem/saudacao")
+    public ResponseEntity<RespostaPresenter> processaOpcao() {
+
+        return ResponseEntity.ok(respostaService.saudacao());
     }
 }
